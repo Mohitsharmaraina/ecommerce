@@ -1,103 +1,15 @@
-🛒 Full Stack E-Commerce Website
-
-A complete MERN stack e-commerce platform with user shopping experience, admin dashboard, authentication, product management, and online payments.
-
-Built with React, Node.js, Express, MongoDB, and deployed on Vercel.
-
-🚀 Features
-👤 User Side
-
-User registration & login (JWT authentication)
-
-Browse products by collection
-
-View detailed product pages
-
-Add to cart with size selection
-
-Place orders
-
-Stripe & Razorpay payment integration
-
-View order history
-
-Profile management
-
-🛠 Admin Panel
-
-Secure admin authentication
-
-Add / edit / delete products
-
-Upload product images (Cloudinary)
-
-View all customer orders
-
-Update order status
-
-Dashboard for store management
-
-🧰 Tech Stack
-Frontend (User Website)
-
-React 19
-
-Vite
-
-React Router
-
-Axios
-
-Tailwind CSS
-
-React Toastify
-
-Admin Panel
-
-React 19
-
-Vite
-
-Tailwind CSS
-
-Axios
-
-Backend
-
-Node.js
-
-Express
-
-MongoDB + Mongoose
-
-JWT Authentication
-
-Bcrypt (password hashing)
-
-Multer (file uploads)
-
-Cloudinary (image hosting)
-
-Stripe & Razorpay (payments)
-
-📂 Project Structure
-ecommerce-project/
+🛒 Full Stack MERN E-Commerce PlatformA production-grade full-stack e-commerce solution. This application features a high-performance customer storefront, a secure administrative dashboard for inventory control, and a robust backend integrated with global payment gateways.🌐 View Live Demo | 🚀 Features | 🛠 Tech Stack | ⚙️ Installation🌐 Live DemoComponentURLUser Website[Add Link Here](https://forever-frontend-livid.vercel.app/)Admin Panel[Add Link Here](https://forever-admin-ecru-nine.vercel.app/orders)Backend API[Add Link Here](https://ecommerce-tau-two-52.vercel.app/)🚀 Core Features👤 Customer ExperienceAuthentication: Secure login/signup using JWT and encrypted passwords.Shopping Flow: Browse by collection, filter products, and view detailed descriptions.Cart Management: Add/remove items with specific size and quantity selection.Secure Checkout: Integrated with Stripe for global/local payments.Order Tracking: Real-time status updates and comprehensive order history.🛠 Administrative ToolsDashboard: High-level overview of sales and store performance.Inventory Management: Full CRUD operations for products.Media Handling: Automatic image optimization and uploads via Cloudinary.Order Control: Manage customer orders and update shipping/delivery statuses.🧰 Tech StackLayerTechnologiesFrontendReact 19, Vite, Tailwind CSS, Axios, React ToastifyAdmin PanelReact 19, Vite, Tailwind CSSBackendNode.js, Express.jsDatabaseMongoDB Atlas, MongoosePaymentsStripe, StorageCloudinary (Images)📁 Project StructurePlaintextecommerce-project
 │
-├── backend/      → Express API + Database
-├── frontend/     → Customer shopping website
-└── admin/        → Admin dashboard
-
-⚙️ Environment Variables
-
-Create a .env file in the backend folder:
-
-PORT=5000
+├── backend     # Express API, Database Models & Payment Logic
+├── frontend    # Customer-facing React application
+└── admin       # Admin Dashboard React application
+⚙️ Environment VariablesCreate a .env file in the respective directories and add the following:🔹 Backend (/backend/.env)Code snippetPORT=5000
 MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
 
 # Admin Credentials
-ADMIN_EMAIL=your_admin_email
-ADMIN_PASSWORD=your_admin_password
+ADMIN_EMAIL=admin@example.com
+ADMIN_PASSWORD=secure_password
 
 # Cloudinary
 CLOUDINARY_NAME=your_cloud_name
@@ -106,106 +18,23 @@ CLOUDINARY_SECRET_KEY=your_secret_key
 
 # Payments
 STRIPE_SECRET_KEY=your_stripe_secret
-RAZORPAY_KEY_ID=your_razorpay_key
-RAZORPAY_KEY_SECRET=your_razorpay_secret
+🔹 Frontend & Admin (.env)Code snippetVITE_BACKEND_URL=https://your-backend-url.com
+▶️ Run Locally1. Clone the RepositoryBashgit clone [https://github.com/Mohir/your-repo-name.git](https://github.com/Mohitsharmaraina/ecommerce.git)
+cd ecommerce
+2. Install DependenciesBash# Backend
+cd backend && npm install
 
+# Frontend
+cd ../frontend && npm install
 
-For frontend and admin, create .env:
-
-VITE_BACKEND_URL=https://your-backend-url.com
-
-▶️ Running Locally
-1️⃣ Clone the Repository
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
-
-2️⃣ Install Dependencies
-
-Backend
-
-cd backend
-npm install
-
-
-Frontend
-
-cd ../frontend
-npm install
-
-
-Admin Panel
-
-cd ../admin
-npm install
-
-3️⃣ Start Development Servers
-
-Backend
-
+# Admin
+cd ../admin && npm install
+3. Start Development ServersYou will need to run these in separate terminals:Bash# Start Backend (from /backend)
 npm run dev
 
-
-Frontend
-
+# Start Frontend (from /frontend)
 npm run dev
 
-
-Admin
-
+# Start Admin (from /admin)
 npm run dev
-
-💳 Payment Integration
-
-Stripe for international payments
-
-Razorpay for local payments
-
-Secure order creation handled from backend
-
-🌐 Deployment
-
-This project is deployed using:
-
-Frontend & Admin: Vercel
-
-Backend: Vercel / Render / Railway (any Node hosting)
-
-Database: MongoDB Atlas
-
-Images: Cloudinary
-
-🔐 Authentication Flow
-
-JWT token stored on login
-
-Token sent in headers for protected routes
-
-Separate middleware for:
-
-User authentication
-
-Admin authentication
-
-📸 Screenshots (Add Yours Here)
-
-You can add screenshots like:
-
-/screenshots/homepage.png
-/screenshots/product-page.png
-/screenshots/admin-dashboard.png
-
-📌 Future Improvements
-
-Product reviews & ratings
-
-Wishlist feature
-
-Coupon / discount system
-
-Email notifications
-
-Inventory stock alerts
-
-👨‍💻 Author
-
-Developed as a full-stack e-commerce project to demonstrate real-world MERN development skills.
+🔐 Authentication & SecurityJWT Implementation: Tokens are generated upon login and required for protected routes.Middleware: Separate logic for authUser and authAdmin to ensure data integrity.Password Hashing: Utilizing bcrypt for one-way encryption of user credentials.🖼 Screenshots: HomepageProduct PageCart PageAdmin Dashboard🚧 Future Enhancements[ ] Reviews: Add product ratings and user feedback sections.[ ] Wishlist: Allow users to save items for later.[ ] Coupons: Implement a discount code system at checkout.[ ] Stock Alerts: Automated notifications when inventory is low.👨‍💻 AuthorMohit SharmaFull Stack MERN [DeveloperGitHub](https://github.com/Mohitsharmaraina) | [LinkedIn](https://www.linkedin.com/in/mohit-sharma-82474925a/)
