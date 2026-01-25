@@ -78,6 +78,24 @@ const PlaceOrder = () => {
             toast.error(response.data.message);
           }
           break;
+        case "STRIPE":
+          const responseStripe = await axios.post(
+            backendUrl + "/api/order/stripe",
+
+            orderData,
+
+            { headers: { token } },
+          );
+          if (responseStripe.data.success) {
+            const { session_url } = responseStripe.data;
+            window.location.replace(session_url);
+          } else {
+            toast.error(responseStripe.data.message);
+          }
+          break;
+        case "RAZORPAY":
+          toast.info("Razorpay not supported yet");
+          break;
         default:
           break;
       }

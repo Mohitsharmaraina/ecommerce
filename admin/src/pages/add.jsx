@@ -39,7 +39,7 @@ const add = ({ token }) => {
       const response = await axios.post(
         backendUrl + "/api/product/add",
         formData,
-        { headers: { Authorization: `Bearer ${token}` } }
+        { headers: { Authorization: `Bearer ${token}` } },
       );
       if (response.data.success) {
         toast.success(response.data.message);
@@ -59,7 +59,6 @@ const add = ({ token }) => {
       toast.error(error.message);
     }
   };
-  console.log("backend url coming is", backendUrl);
   return (
     <form
       className="flex flex-col w-full items-start gap-3"
@@ -200,7 +199,7 @@ const add = ({ token }) => {
               setSizes((prev) =>
                 prev.includes("S")
                   ? prev.filter((item) => item !== "S")
-                  : [...prev, "S"]
+                  : [...prev, "S"],
               )
             }
             className={`${
@@ -214,7 +213,7 @@ const add = ({ token }) => {
               setSizes((prev) =>
                 prev.includes("M")
                   ? prev.filter((item) => item !== "M")
-                  : [...prev, "M"]
+                  : [...prev, "M"],
               )
             }
             className={`${
@@ -228,7 +227,7 @@ const add = ({ token }) => {
               setSizes((prev) =>
                 prev.includes("L")
                   ? prev.filter((item) => item !== "L")
-                  : [...prev, "L"]
+                  : [...prev, "L"],
               )
             }
             className={`${
@@ -242,7 +241,7 @@ const add = ({ token }) => {
               setSizes((prev) =>
                 prev.includes("XL")
                   ? prev.filter((item) => item !== "XL")
-                  : [...prev, "XL"]
+                  : [...prev, "XL"],
               )
             }
             className={`${
@@ -256,7 +255,7 @@ const add = ({ token }) => {
               setSizes((prev) =>
                 prev.includes("XXL")
                   ? prev.filter((item) => item !== "XXL")
-                  : [...prev, "XXL"]
+                  : [...prev, "XXL"],
               )
             }
             className={`${

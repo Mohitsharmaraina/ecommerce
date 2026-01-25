@@ -2,7 +2,7 @@ import validator from "validator";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import userModel from "../models/userModel.js";
-
+import { v2 as cloudinary } from "cloudinary";
 const createToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET);
 };
@@ -85,6 +85,45 @@ const registerUser = async (req, res) => {
   }
 };
 
+const getCurrentUser = async (req, res) => {
+  try {
+    const { userId } = req.userId;
+    const user = await userModel.findById(userId).select("name email");
+    return res.json({ success: true, user });
+  } catch (error) {
+    console.log(error);
+    return res.json({ success: false, message: error.message });
+  }
+};
+const updateUserProfile = async (req, res) => {
+  try {
+    const { userId } = req.userId;
+    const name = req.body.name;
+    const email = req.body.email;
+
+    const updateData = { name, email };
+
+    // If user uploaded a file, upload to Cloudinary
+    if (req.file) {
+      const result = await cloudinary.uploader.upload(req.file.path, {
+        resource_type: "image",
+        folder: "user_avatars",
+      });
+      updateData.avatar = result.secure_url;
+    }
+
+    // Update user in DB
+
+    const updatedUser = await userModel
+      .findByIdAndUpdate(userId, updateData, { new: true })
+      .select("name email avatar");
+
+    res.json({ success: true, user: updatedUser });
+  } catch (error) {
+    res.json({ success: false, message: error.message });
+  }
+};
+
 const adminLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -103,4 +142,10 @@ const adminLogin = async (req, res) => {
   }
 };
 
-export { loginUser, registerUser, adminLogin };
+export {
+  loginUser,
+  registerUser,
+  adminLogin,
+  getCurrentUser,
+  updateUserProfile,
+};

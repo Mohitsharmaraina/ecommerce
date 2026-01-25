@@ -10,8 +10,8 @@ const Footer = () => {
           <img src={assets.logo} className="mb-5 w-32" alt="" />
           <p className="w-full md:w-2/3 text-gray-600">
             {" "}
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            insdustry. Lorem Ipsum has been
+            Wear confidence. Own your style. Fresh fits, premium quality,
+            delivered to your door.{" "}
           </p>
         </div>
         {/* information */}

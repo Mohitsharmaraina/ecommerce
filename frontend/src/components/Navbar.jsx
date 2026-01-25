@@ -2,9 +2,12 @@ import React, { useContext, useState } from "react";
 import { assets } from "../assets/frontend_assets/assets.js";
 import { Link, NavLink } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext.jsx";
+import Profile from "./Profile.jsx";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
+
   const {
     setShowSearch,
     getCartCount,
@@ -54,12 +57,14 @@ const Navbar = () => {
       {/* search and profile */}
       <div className="flex items-center gap-6">
         {/* search icon */}
-        <img
-          onClick={() => setShowSearch(true)}
-          src={assets.search_icon}
-          alt="search"
-          className="w-5 cursor-pointer"
-        />
+        {window.location.pathname === "/collection" && (
+          <img
+            onClick={() => setShowSearch(true)}
+            src={assets.search_icon}
+            alt="search"
+            className="w-5 cursor-pointer"
+          />
+        )}
         {/* profile icon */}
         <div className="group relative">
           <img
@@ -73,7 +78,12 @@ const Navbar = () => {
           {token && (
             <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
               <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded">
-                <p className="cursor-pointer hover:text-black">My Profile</p>
+                <p
+                  className="cursor-pointer hover:text-black"
+                  onClick={() => setShowProfile(true)}
+                >
+                  My Profile
+                </p>
                 <p
                   onClick={() => navigate("/orders")}
                   className="cursor-pointer hover:text-black"
@@ -151,6 +161,21 @@ const Navbar = () => {
             >
               CONTACT
             </NavLink>
+          </div>
+        </div>
+      )}
+      {showProfile && (
+        <div className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center">
+          <div className="bg-white w-[90%] max-w-md p-6 rounded-lg relative">
+            {/* Close Button */}
+            <button
+              onClick={() => setShowProfile(false)}
+              className="absolute top-2 right-3 text-gray-600 text-xl"
+            >
+              ✕
+            </button>
+
+            <Profile />
           </div>
         </div>
       )}

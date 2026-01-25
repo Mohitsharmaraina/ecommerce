@@ -14,13 +14,11 @@ const Orders = ({ token }) => {
       return null;
     }
     try {
-      console.log("backend url is", backendUrl);
-
       const response = await axios.get(backendUrl + "/api/order/list", {
         headers: { Authorization: `bearer ${token}` },
       });
       if (response.data.success) {
-        setOrders(response.data.orders);
+        setOrders(response.data.orders.reverse());
       } else {
         toast.error(response.data.message);
       }

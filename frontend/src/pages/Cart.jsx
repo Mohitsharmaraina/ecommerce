@@ -3,6 +3,7 @@ import { ShopContext } from "../context/ShopContext";
 import Title from "../components/Title";
 import { assets } from "../assets/frontend_assets/assets";
 import CartTotal from "../components/CartTotal";
+import { toast } from "react-toastify";
 
 const Cart = () => {
   const { navigate, products, cartItems, currency, updateItemsQuantity } =
@@ -37,7 +38,7 @@ const Cart = () => {
       <div>
         {cartData.map((item, index) => {
           const productData = products.find(
-            (product) => product._id === item._id
+            (product) => product._id === item._id,
           );
 
           return (
@@ -74,7 +75,7 @@ const Cart = () => {
                     : updateItemsQuantity(
                         item._id,
                         item.size,
-                        Number(e.target.value)
+                        Number(e.target.value),
                       )
                 }
                 className="border max-w-10 sm:max-w-20 px-1 sm:px-2 py-1"
@@ -100,7 +101,11 @@ const Cart = () => {
         </div>
         <div className="w-full text-end">
           <button
-            onClick={() => navigate("/place-order")}
+            onClick={
+              cartData.length > 0
+                ? () => navigate("/place-order")
+                : () => toast.error("No items in cart.")
+            }
             className="bg-black text-white text-sm my-8 px-8 py-3"
           >
             PROCEED TO/ CHECKOUT
