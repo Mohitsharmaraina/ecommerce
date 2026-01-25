@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../context/ShopContext";
 import { toast } from "react-toastify";
-import { backendUrl } from "../../../admin/src/App";
+
 import axios from "axios";
 import Title from "./Title";
 import { assets } from "../assets/frontend_assets/assets";
 
 const Profile = () => {
-  const { token } = useContext(ShopContext);
+  const { token, backendUrl } = useContext(ShopContext);
 
   const [user, setUser] = useState({});
   const [editMode, setEditMode] = useState(false);
